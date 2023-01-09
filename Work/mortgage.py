@@ -5,10 +5,16 @@ payment = 2684.11
 total_paid = 0.0
 month = 0
 
+extra_payment_start_month = int(input('X pay start month? '))
+extra_payment_end_month = int(input('X pay end month? '))
+extra_payment = float(input('X pay amount? '))
+extra_payment += 2684.11
+print(extra_payment)
+
 while principal > 0:
-    if month < 12:
-        payment = 3684.11
-    elif month >= 12:
+    if month < extra_payment_end_month and month >= extra_payment_start_month:
+        payment = extra_payment
+    else:
         payment = 2684.11 
     principal = principal * (1+rate/12) - payment
     total_paid = total_paid + payment
