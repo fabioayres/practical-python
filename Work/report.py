@@ -6,8 +6,12 @@ def read_portfolio(filename):
         lines = csv.reader(f)
         next(lines)
         for line in lines:
-            row = (line[0], int(line[1]), float(line[2]))
-            portfolio.append(row)
+            holding={
+                'name': line[0],
+                'share' : int(line[1]),
+                'price' : float(line[2])
+            }
+            portfolio.append(holding)
             
     return portfolio
 # Exercise 2.4
