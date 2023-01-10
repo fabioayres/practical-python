@@ -6,11 +6,10 @@ def portfolio_cost(filename):
         lines = csv.reader(f)
         next(lines)
         for line in lines:
-            print(line)
+            print(line)            
             try:
-                shares = int(line[1])
-                price = float(line[2])
-                stock_sum += shares*price
+                row = (line[0], int(line[1]), float(line[2]))
+                stock_sum += row[1]*row[2]
             except ValueError:
                 print('Missing value!', line)
         
