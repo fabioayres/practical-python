@@ -5,10 +5,15 @@ def portfolio_cost(filename):
         next(f)
         for line in f:
             row = line.split(',')
-            stock_sum += int(row[1])*float(row[2])
+            try:
+                shares = int(row[1])
+                price = float(row[2])
+                stock_sum += shares*price
+            except ValueError:
+                print('Missing value!', line)
         
         return stock_sum
     
-cost = portfolio_cost('Data/portfolio.csv')
+cost = portfolio_cost('Data/missing.csv')
 print('Total cost:', cost)
 # Exercise 1.27
