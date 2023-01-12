@@ -46,8 +46,21 @@ def make_report(portfolio, prices):
     return report
 
 def read_report (report):
+    headers = ('Name','Shares','Price','Change')
+    for word in headers:
+        print(f'{word:>10s}', end=' ')
+
+    print('')
+
+    for word in headers:
+        print(10*'-', end =' ')
+    
+    print('')
+
     for name, shares, price, change in report:
-        print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
+        pound_sign = '$'
+        pound_sign+= price
+        print(f'{name:>10s} {shares:>10d} {pound_sign:>10.2f} {change:>10.2f}')
         
         
         
