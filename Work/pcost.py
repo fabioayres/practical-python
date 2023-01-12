@@ -5,8 +5,7 @@ def portfolio_cost(filename):
     with open(filename, 'rt') as f:
         lines = csv.reader(f)
         next(lines)
-        for line in lines:
-            print(line)            
+        for lineno, line in enumerate (lines, start=1):         
             try:
                 row = {
                     'name': line[0], 
@@ -15,11 +14,11 @@ def portfolio_cost(filename):
                     }
                 cost += row['share']*row['price']
             except ValueError:
-                print('Missing value!', line)
+                print(f'Could not convert line {lineno}: {line}')
         
         return cost
 
-portfolio_cost('Data/portfolio.csv')    
+# portfolio_cost('Data/portfolio.csv')   s 
 cost = portfolio_cost('Data/missing.csv')
 print('Total cost:', cost)
 # Exercise 1.27
