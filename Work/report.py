@@ -44,6 +44,10 @@ def make_report(portfolio, prices):
         else:
             print('{name} not in prices'.format_map(holding))
     return report
+
+def read_report (report):
+    for name, shares, price, change in report:
+        print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
         
         
         
