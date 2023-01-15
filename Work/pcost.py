@@ -4,13 +4,15 @@ def portfolio_cost(filename):
     cost = 0
     with open(filename, 'rt') as f:
         lines = csv.reader(f)
-        next(lines)
-        for lineno, line in enumerate (lines, start=1):         
+        headers = next(lines)
+        print(headers)
+        for lineno, line in enumerate (lines, start=1):    
+            record = dict(zip(headers,line))     
             try:
                 row = {
-                    'name': line[0], 
-                    'share': int(line[1]), 
-                    'price': float(line[2])
+                    'name': record['name'], 
+                    'share': int(record['shares']),
+                    'price': float(record['price'])
                     }
                 cost += row['share']*row['price']
             except ValueError:
